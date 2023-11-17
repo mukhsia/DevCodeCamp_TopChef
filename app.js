@@ -298,13 +298,13 @@ function runApp(allDishes, specialDish) {
         case "6":
             // TODO #8: Call the appropriate function to generate the marketing text message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
-            let marketingTextMessage = generateMarketingMessage(todaysSpecialDish, textMessage);
+            let marketingTextMessage = generateMarketingMessage(specialDish, textMessage);
             console.log(marketingTextMessage);
             break
         case "7":
             // TODO #9: Call the appropriate function to generate the marketing email message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
-            let marketingEmailMessage = generateMarketingMessage(todaysSpecialDish, emailMessage);
+            let marketingEmailMessage = generateMarketingMessage(specialDish, emailMessage);
             console.log(marketingEmailMessage);
             break
         case "Exit":
