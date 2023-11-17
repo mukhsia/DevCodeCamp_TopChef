@@ -1,2 +1,3 @@
 # DevCodeCamp_TopChef
-A Javascript + HTML application for a library of dishes/ food items.
+
+A Javascript + HTML console application for searching through a library of dishes/ food items.
