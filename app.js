@@ -277,7 +277,7 @@ function customPrompt(promptQuestion, arrayOfValidResponses) {
     return response;
 }
 
-// <<<<<<<<<<<<<<<<< Dish To String Bonus Story 1 <<<<<<<<<<<<<<<<<
+// <<<<<<<<<<<<<<<<< dish to string Bonus Story 1 <<<<<<<<<<<<<<<<<
 function dishToString(dish) {
     let dishString = `Name: ${dish.name}\n 
     Cuisine: ${dish.cuisine}\n
@@ -289,6 +289,22 @@ function dishToString(dish) {
     }
 
     return dishString;
+}
+
+// <<<<<<<<<<<<<<<<< stringArr to string Bonus Story 2 <<<<<<<<<<<<<<<<<
+function stringArrToString(stringArr) {
+    let printStr = stringArr.reduce(function(result, currString) {
+        return result + `${currString}\n`;
+    }, []);
+    console.log(printStr);
+}
+
+// <<<<<<<<<<<<<<<<< dishArr to string Bonus Story 2 <<<<<<<<<<<<<<<<<
+function dishArrToString(dishArr) {
+    let printStr =  dishArr.reduce(function(result, currDish) {
+        return result + `${dishToString(currDish)}\n`;
+    }, []);
+    console.log(printStr);
 }
 
 
@@ -307,23 +323,23 @@ function runApp(allDishes, specialDish) {
     switch (userChoice) {
         case "1":
             let mexicanDishes = findMexicanFood(allDishes)
-            console.log(mexicanDishes)
+            dishArrToString(mexicanDishes)
             break
         case "2":
             let italianDishes = findItalianFood(allDishes)
-            console.log(italianDishes)
+            dishArrToString(italianDishes)
             break
         case "3":
             let cuisineSearchResults = searchCuisines(allDishes)
-            console.log(cuisineSearchResults)
+            dishArrToString(cuisineSearchResults)
             break
         case "4":
             let ingredientSearchResults = searchIngredients(allDishes)
-            console.log(ingredientSearchResults)
+            dishArrToString(ingredientSearchResults)
             break
         case "5":
             let concatenatedDishes = generateCuisineDishName(allDishes)
-            console.log(concatenatedDishes)
+            stringArrToString(concatenatedDishes)
             break
         case "6":
             // TODO #8: Call the appropriate function to generate the marketing text message.  
