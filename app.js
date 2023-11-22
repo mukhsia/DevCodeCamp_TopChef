@@ -125,7 +125,8 @@ let todaysSpecialDish = {
 function findMexicanFood(allDishes) {
     alert("Searching for Mexican dishes...")
     let results = allDishes.filter(function (el) {
-        if (el.cuisine === "Mexican") {
+        if (el.cuisine === "Mexican") 
+        {
             return true;
         } else {
             return false;
@@ -145,7 +146,8 @@ function findItalianFood(allDishes) {
     alert("Searching for Italian dishes...")
     // TODO #2: Filter all dishes for those that have a cuisine type of Italian
     let results = allDishes.filter(function (dish) {
-        if (dish.cuisine === "Italian") {
+        if (dish.cuisine === "Italian") 
+        {
             return true;
         } else {
             return false;
@@ -167,7 +169,8 @@ function searchCuisines(allDishes) {
     alert("Searching for dishes by cuisine...")
     // TODO #3: Gather user input for a cuisine to search for, then filter for all dishes matching this cuisine type
     let results = allDishes.filter(function (dish) {
-        if (dish.cuisine === userInput) {
+        if (dish.cuisine === userInput) 
+        {
             return true;
         } else {
             return false;
@@ -271,7 +274,8 @@ function generateMarketingMessage(dishOfTheDay, messageTypeCallback) {
 function customPrompt(promptQuestion, arrayOfValidResponses) {
     // TODO #10: Replace all instances of prompt() in the above functions with customPrompt()
     let response;
-    while (!arrayOfValidResponses.includes(response)) {
+    while (!arrayOfValidResponses.includes(response)) 
+    {
         response = prompt(promptQuestion);
     }
     return response;
@@ -284,7 +288,8 @@ function dishToString(dish) {
     Servings: ${dish.servings}\n
     Ingredients: \n`;
 
-    for(ingredient of dish.ingredients) {
+    for(ingredient of dish.ingredients) 
+    {
         dishString = dishString + `             -${ingredient}\n`
     }
 
@@ -293,9 +298,19 @@ function dishToString(dish) {
 
 // <<<<<<<<<<<<<<<<< stringArr to string Bonus Story 2 <<<<<<<<<<<<<<<<<
 function stringArrToString(stringArr) {
-    let printStr = stringArr.reduce(function(result, currString) {
-        return result + `${currString}\n`;
-    }, ``);
+    // Check for marketing messages
+    let printStr;
+    if(!Array.isArray(stringArr))
+    {
+        printStr = stringArr;
+    } 
+    else 
+    {
+        printStr = stringArr.reduce(function(result, currString) {
+            return result + `${currString}\n`;
+        }, ``);
+    }
+
     console.log(printStr);
 }
 
@@ -358,13 +373,13 @@ function runApp(allDishes, specialDish) {
             // TODO #8: Call the appropriate function to generate the marketing text message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
             let marketingTextMessage = generateMarketingMessage(specialDish, textMessage);
-            console.log(marketingTextMessage);
+            stringArrToString(marketingTextMessage);
             break
         case "7":
             // TODO #9: Call the appropriate function to generate the marketing email message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
             let marketingEmailMessage = generateMarketingMessage(specialDish, emailMessage);
-            console.log(marketingEmailMessage);
+            stringArrToString(marketingEmailMessage);
             break
         case "8":
             // Bonus 3 case
