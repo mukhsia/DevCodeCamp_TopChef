@@ -307,6 +307,18 @@ function dishArrToString(dishArr) {
     console.log(printStr);
 }
 
+// <<<<<<<<<<<<<<<<< All Dishes Total Serving Count Bonus Story 3 <<<<<<<<<<<<<<<<<
+function totalServingCount(dishArr) {
+    alert("Totalling all dishes serving counts...");
+    let result = dishArr.reduce(function(totalServingCount, currDish) {
+        return totalServingCount + currDish.servings;
+    }, 0);
+    alert("Successfully summed up all dishes serving count. Check the console for full output");
+    console.log(result);
+    return result;
+}
+
+
 
 // <<<<<<<<<<<<<<<<< MAIN MENU FUNCTION <<<<<<<<<<<<<<<<<
 
@@ -319,7 +331,8 @@ function runApp(allDishes, specialDish) {
     Press 5 to see a list of cuisines & dish names.
     Press 6 to send a marketing text message for Today's Special Dish.
     Press 7 to send a marketing email message for Today's Special Dish.
-    Enter "Exit" to quit the application.`, ["1", "2", "3", "4", "5", "6", "7", "Exit"])
+    Press 8 to see the total serving count for all dishes.
+    Enter "Exit" to quit the application.`, ["1", "2", "3", "4", "5", "6", "7", "8", "Exit"])
     switch (userChoice) {
         case "1":
             let mexicanDishes = findMexicanFood(allDishes)
@@ -352,6 +365,10 @@ function runApp(allDishes, specialDish) {
             // You will need to provide today's dish and the appropriate callback function as arguments!
             let marketingEmailMessage = generateMarketingMessage(specialDish, emailMessage);
             console.log(marketingEmailMessage);
+            break
+        case "8":
+            // Bonus 3 case
+            totalServingCount(dishes);
             break
         case "Exit":
             alert("Thank you for using the Recipe Searching Application!  Goodbye!")
