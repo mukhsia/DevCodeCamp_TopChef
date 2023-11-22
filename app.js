@@ -223,7 +223,7 @@ function emailMessage(dishOfTheDay) {
     Thank you for subscribing to email alert messages!
     Today's Dish of the day is:
 
-    ${dishOfTheDay.cuisine} ${dishOfTheDay.name}
+    ${dishToString(dishOfTheDay)}
 
     We hope to see you in soon!
 
@@ -244,7 +244,7 @@ function textMessage(dishOfTheDay) {
     This is an automated text message alert.
     Today's Dish of the day is:
 
-    ${dishOfTheDay.cuisine} ${dishOfTheDay.name}
+    ${dishToString(dishOfTheDay)}
 
     We hope to see you in soon!
 
@@ -276,6 +276,21 @@ function customPrompt(promptQuestion, arrayOfValidResponses) {
     }
     return response;
 }
+
+// <<<<<<<<<<<<<<<<< Dish To String Bonus Story 1 <<<<<<<<<<<<<<<<<
+function dishToString(dish) {
+    let dishString = `Name: ${dish.name}\n 
+    Cuisine: ${dish.cuisine}\n
+    Servings: ${dish.servings}\n
+    Ingredients: \n`;
+
+    for(ingredient of dish.ingredients) {
+        dishString = dishString + `             -${ingredient}\n`
+    }
+
+    return dishString;
+}
+
 
 // <<<<<<<<<<<<<<<<< MAIN MENU FUNCTION <<<<<<<<<<<<<<<<<
 
