@@ -157,7 +157,13 @@ function findItalianFood(allDishes) {
 }
 
 function searchCuisines(allDishes) {
-    let userInput = prompt(`Enter a cuisine type: `);
+    let arrayOfValidResponses = allDishes.reduce(function (uniqueCuisines, dish){
+        if(!uniqueCuisines.includes(dish.cuisine)){
+            uniqueCuisines.push(dish.cuisine);
+        }
+        return uniqueCuisines;
+    }, []);
+    let userInput = customPrompt(`Enter a cuisine type: `, arrayOfValidResponses);
     alert("Searching for dishes by cuisine...")
     // TODO #3: Gather user input for a cuisine to search for, then filter for all dishes matching this cuisine type
     let results = allDishes.filter(function (dish) {
@@ -166,14 +172,23 @@ function searchCuisines(allDishes) {
         } else {
             return false;
         }
-    })
+    });
 
     alert("Found all dishes matching the cuisine search term!  Check the console for full output")
     return results;
 }
 
 function searchIngredients(allDishes) {
-    let userInput = prompt(`Enter an ingredient name: `);
+    let arrayOfValidResponses = allDishes.reduce(function (uniqueIngredients, dish){
+        for (ingredient of dish.ingredients)
+        {
+            if(!uniqueIngredients.includes(ingredient)){
+                uniqueIngredients.push(ingredient);
+            }
+        }
+        return uniqueIngredients;
+    }, []);
+    let userInput = customPrompt(`Enter an ingredient name: `, arrayOfValidResponses);
     alert("Searching for dishes by ingredient...")
     // TODO #4: Gather user input for an ingredient to search for, then filter for all dishes that INCLUDE this ingredient in their ingredients array property
     let results = allDishes.filter(function (dish) {
@@ -182,7 +197,7 @@ function searchIngredients(allDishes) {
         } else {
             return false;
         }
-    })
+    });
 
     alert("Found all dishes that contain the ingredient search term!  Check the console for full output")
     return results;
@@ -193,7 +208,7 @@ function generateCuisineDishName(allDishes) {
     // TODO #5: Apply the concatenatorFunction to each dish in allDishes, then log to the console the modified result
     let results = allDishes.map(function (dish) {
         return `${dish.cuisine} ${dish.name}`;
-    })
+    });
     alert("Successfully combined cuisine and dish names!  Check the console for full output.")
     return results;
 }
@@ -255,11 +270,11 @@ function generateMarketingMessage(dishOfTheDay, messageTypeCallback) {
 
 function customPrompt(promptQuestion, arrayOfValidResponses) {
     // TODO #10: Replace all instances of prompt() in the above functions with customPrompt()
-    let response
+    let response;
     while (!arrayOfValidResponses.includes(response)) {
-        response = prompt(promptQuestion)
+        response = prompt(promptQuestion);
     }
-    return response
+    return response;
 }
 
 // <<<<<<<<<<<<<<<<< MAIN MENU FUNCTION <<<<<<<<<<<<<<<<<
@@ -312,7 +327,7 @@ function runApp(allDishes, specialDish) {
             return
         default:
             alert("Invalid choice, please try your selection again!")
-            return runApp(allDishes, specialDish)
+            return runApp(allDishes, specialDish);
     }
 }
 
