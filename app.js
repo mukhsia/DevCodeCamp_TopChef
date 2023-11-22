@@ -295,7 +295,7 @@ function dishToString(dish) {
 function stringArrToString(stringArr) {
     let printStr = stringArr.reduce(function(result, currString) {
         return result + `${currString}\n`;
-    }, []);
+    }, ``);
     console.log(printStr);
 }
 
@@ -303,7 +303,7 @@ function stringArrToString(stringArr) {
 function dishArrToString(dishArr) {
     let printStr =  dishArr.reduce(function(result, currDish) {
         return result + `${dishToString(currDish)}\n`;
-    }, []);
+    }, ``);
     console.log(printStr);
 }
 
